@@ -33,10 +33,10 @@ public class ComputerInputData {
     public List<Integer> getComputerList() {
         return computerList;
     }
-
-
-    public static void main(String[] args) {
-        ComputerInputData computerInputData = new ComputerInputData();
-        System.out.println("컴퓨터가 생성한 랜덤 숫자: " + computerInputData.getComputerList());
-    }
 }
+
+    // public static void main(String[] args) {
+    //     ComputerInputData computerInputData = new ComputerInputData();
+    //     System.out.println("컴퓨터가 생성한 랜덤 숫자: " + computerInputData.getComputerList());
+    // }
+// }
