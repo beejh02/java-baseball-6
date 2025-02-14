@@ -4,8 +4,10 @@ import java.util.List;
 
 import baseball.model.ComputerInputData;
 import baseball.view.PlayerInputView;
-import main.java.baseball.model.BaseballCompareModel;
-import main.java.baseball.service.BaseballGameService;
+import baseball.model.BaseballCompareModel;
+import baseball.service.BaseballGameService;
+import baseball.service.InvalidInputHandler;
+import baseball.service.MoreGameService;
 
 public class GameController {
     
@@ -13,37 +15,66 @@ public class GameController {
     private BaseballGameService baseballGameService;
     private ComputerInputData computerInputData;
     private BaseballCompareModel gameModel;
+    private InvalidInputHandler invalidInputHandler;
+    private MoreGameService moreGameService;
 
     public GameController() {
         this.playerInputView = new PlayerInputView();
         this.baseballGameService = new BaseballGameService();
         this.computerInputData = new ComputerInputData();
         this.gameModel = new BaseballCompareModel();
+        this.invalidInputHandler = new InvalidInputHandler();
+        this.moreGameService = new MoreGameService();
     }
 
 
     public void gameFlow() {
-        String input = playerInputView.getPlayerInput();
+        boolean gameWon = false;
 
-        if(baseballGameService.isValidInput(input)) {
+        while (!gameWon) {
+            String input = playerInputView.getPlayerInput();
+
+            if (!baseballGameService.isValidInput(input)) {
+                invalidInputHandler.invalidInputPrint();
+            }
+
             List<Integer> computerList = computerInputData.getComputerList();
             int[] result = gameModel.compareNumbers(input, computerList);
 
-            if(result[1] == 3) {
-                System.out.println("낫싱");
-                break;
-            }
-
-            System.out.println(result[0]+"스트라이크"+result[1]+"볼");
-
-            if(result[0] == 3) {
+            if (result[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+                gameWon = true;  // 게임 종료
+                continue;
             }
-        } else {
-            // 잘못된 입력 service 만들어야함.
-            // IllegalArgumentException이라는데 알아볼 것
+
+            printGameResult(result);
+            }
+        if(moreGameService.more() == true) {
+            computerInputData = new ComputerInputData();
+            gameFlow();
         }
     }
 
+
+    private void printGameResult(int[] result) {
+        StringBuilder output = new StringBuilder();
+    
+        if (result[0] == 0 && result[1] == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (result[0] > 0) {
+                output.append(result[0]).append("스트라이크 ");
+            }
+    
+            if (result[1] > 0) {
+                output.append(result[1]).append("볼");
+            }
+    
+            if (output.length() > 0) {
+                System.out.println(output);
+            } else {
+                System.out.println("낫싱");
+            }
+        }
+    }
 }
