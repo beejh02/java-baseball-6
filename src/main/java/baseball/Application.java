@@ -7,5 +7,4 @@ public class Application {
         GameController gameController = new GameController();
         gameController.gameFlow();
     }
-    
 }
