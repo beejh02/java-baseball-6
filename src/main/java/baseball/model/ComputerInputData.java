@@ -17,14 +17,14 @@ public class ComputerInputData {
     }
 
     public static List<Integer> picking() {
-        Set<Integer> uniqueNumbers = new HashSet<>(); // 중복 없애려고 set 씀
+        Set<Integer> uniqueNumbers = new HashSet<>();
 
         while (uniqueNumbers.size() < 3) {
             uniqueNumbers.add(Randoms.pickNumberInRange(1, 9));
         }
 
-        List<Integer> randomList = new ArrayList<>(uniqueNumbers); // set 자료형 순서 저장 안해서 자바도 그런지는 모르겠는데 비교할거라 List로 변환
-        Collections.shuffle(randomList); // 리스트 섞기
+        List<Integer> randomList = new ArrayList<>(uniqueNumbers);
+        Collections.shuffle(randomList);
 
         return randomList;
     }
@@ -33,9 +33,3 @@ public class ComputerInputData {
         return computerList;
     }
 }
-
-//     public static void main(String[] args) {
-//         ComputerInputData computerInputData = new ComputerInputData();
-//         System.out.println("컴퓨터가 생성한 랜덤 숫자: " + computerInputData.getComputerList());
-//     }
-// }

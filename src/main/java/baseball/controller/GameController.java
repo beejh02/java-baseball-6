@@ -4,7 +4,7 @@ import java.util.List;
 
 import baseball.model.ComputerInputData;
 import baseball.view.PlayerInputView;
-import baseball.model.ComparePlayerToComputer;
+import baseball.model.CompareBallsModel;
 import baseball.service.BaseballGameService;
 import baseball.service.InvalidInputHandler;
 import baseball.service.MoreGameService;
@@ -14,7 +14,7 @@ public class GameController {
     private PlayerInputView playerInputView;
     private BaseballGameService baseballGameService;
     private ComputerInputData computerInputData;
-    private ComparePlayerToComputer gameModel;
+    private CompareBallsModel gameModel;
     private InvalidInputHandler invalidInputHandler;
     private MoreGameService moreGameService;
 
@@ -22,7 +22,7 @@ public class GameController {
         this.playerInputView = new PlayerInputView();
         this.baseballGameService = new BaseballGameService();
         this.computerInputData = new ComputerInputData();
-        this.gameModel = new ComparePlayerToComputer();
+        this.gameModel = new CompareBallsModel();
         this.invalidInputHandler = new InvalidInputHandler();
         this.moreGameService = new MoreGameService();
     }
@@ -43,7 +43,7 @@ public class GameController {
 
             if (result[0] == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                gameWon = true;  // 게임 종료
+                gameWon = true;
                 continue;
             }
 

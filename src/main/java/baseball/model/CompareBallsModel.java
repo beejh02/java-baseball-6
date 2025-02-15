@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BaseballCompareModel {
+public class CompareBallsModel {
     
 // 사용자 입력과 컴퓨터 숫자 비교
 public int[] compareNumbers(String playerInput, List<Integer> computerList) {
