@@ -6,7 +6,8 @@ import java.util.Set;
 public class BaseballGameService {
     
     public boolean isValidInput(String input) {
-        if(input.length() != 3) { //3자리 체크
+        // 3자리 체크
+        if(input.length() != 3) {
             return false;
         }
 

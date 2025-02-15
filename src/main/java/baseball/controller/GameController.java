@@ -61,20 +61,18 @@ public class GameController {
     
         if (result[0] == 0 && result[1] == 0) {
             System.out.println("낫싱");
-        } else {
-            if (result[0] > 0) {
-                output.append(result[0]).append("스트라이크 ");
-            }
-    
-            if (result[1] > 0) {
-                output.append(result[1]).append("볼");
-            }
-    
-            if (output.length() > 0) {
-                System.out.println(output);
-            } else {
-                System.out.println("낫싱");
-            }
+        }
+        
+        if (result[0] > 0) {
+            output.append(result[0]).append("스트라이크 ");
+        }
+        
+        if (result[1] > 0) {
+            output.append(result[1]).append("볼");
+        }
+        
+        if (output.length() > 0) {
+            System.out.println(output);
         }
     }
 }
