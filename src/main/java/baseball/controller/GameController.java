@@ -4,7 +4,7 @@ import java.util.List;
 
 import baseball.model.ComputerInputData;
 import baseball.view.PlayerInputView;
-import baseball.model.BaseballCompareModel;
+import baseball.model.ComparePlayerToComputer;
 import baseball.service.BaseballGameService;
 import baseball.service.InvalidInputHandler;
 import baseball.service.MoreGameService;
@@ -14,7 +14,7 @@ public class GameController {
     private PlayerInputView playerInputView;
     private BaseballGameService baseballGameService;
     private ComputerInputData computerInputData;
-    private BaseballCompareModel gameModel;
+    private ComparePlayerToComputer gameModel;
     private InvalidInputHandler invalidInputHandler;
     private MoreGameService moreGameService;
 
@@ -22,7 +22,7 @@ public class GameController {
         this.playerInputView = new PlayerInputView();
         this.baseballGameService = new BaseballGameService();
         this.computerInputData = new ComputerInputData();
-        this.gameModel = new BaseballCompareModel();
+        this.gameModel = new ComparePlayerToComputer();
         this.invalidInputHandler = new InvalidInputHandler();
         this.moreGameService = new MoreGameService();
     }
